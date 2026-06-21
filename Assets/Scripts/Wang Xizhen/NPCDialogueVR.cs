@@ -28,6 +28,10 @@ public class NPCDialogueVR : MonoBehaviour
     private bool dialogueActive;
     private int currentLineIndex;
 
+    [Header("Editor Test")]//FOR TEST
+    public bool allowKeyboardTest = true;
+    public KeyCode testInteractKey = KeyCode.E;
+
     private void Awake()
     {
         interactable = GetComponent<XRSimpleInteractable>();
@@ -45,6 +49,24 @@ public class NPCDialogueVR : MonoBehaviour
         if (dialogueObject != null)
         {
             dialogueObject.SetActive(false);
+        }
+    }
+
+    private void Update()//FOR TEST
+    {
+        if (!allowKeyboardTest)
+        {
+            return;
+        }
+
+        if (!Application.isEditor)
+        {
+            return;
+        }
+
+        if (playerInRange && Input.GetKeyDown(testInteractKey))
+        {
+            TryInteract();
         }
     }
 
@@ -91,6 +113,11 @@ public class NPCDialogueVR : MonoBehaviour
     }
 
     private void OnNPCSelected(SelectEnterEventArgs args)
+    {
+        TryInteract();
+    }
+
+    private void TryInteract()
     {
         if (!playerInRange)
         {
