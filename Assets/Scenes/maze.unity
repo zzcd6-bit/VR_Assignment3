@@ -5379,8 +5379,8 @@ MonoBehaviour:
   dialogueAudioSource: {fileID: 351845222}
   dialogueSound: {fileID: 8300000, guid: 6edeab6080fcdad4aa1a0fd933b881ce, type: 3}
   dialogueSoundVolume: 1
-  allowKeyboardTest: 1
-  testInteractKey: 101
+  allowKeyboardTest: 0
+  testInteractKey: 0
 --- !u!114 &351845219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12002,7 +12002,7 @@ MonoBehaviour:
   dialogueSound: {fileID: 8300000, guid: 6edeab6080fcdad4aa1a0fd933b881ce, type: 3}
   dialogueSoundVolume: 1
   allowKeyboardTest: 1
-  testInteractKey: 101
+  testInteractKey: 0
 --- !u!95 &875499622 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95019386741244860, guid: 5ca4581ce598741409bac0c6f1bcf24c, type: 3}
@@ -16553,8 +16553,8 @@ MonoBehaviour:
   dialogueAudioSource: {fileID: 1127373388}
   dialogueSound: {fileID: 8300000, guid: 6edeab6080fcdad4aa1a0fd933b881ce, type: 3}
   dialogueSoundVolume: 1
-  allowKeyboardTest: 1
-  testInteractKey: 101
+  allowKeyboardTest: 0
+  testInteractKey: 0
 --- !u!135 &1127373385
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24114,8 +24114,8 @@ MonoBehaviour:
   dialogueAudioSource: {fileID: 1692113164}
   dialogueSound: {fileID: 8300000, guid: 6edeab6080fcdad4aa1a0fd933b881ce, type: 3}
   dialogueSoundVolume: 1
-  allowKeyboardTest: 1
-  testInteractKey: 101
+  allowKeyboardTest: 0
+  testInteractKey: 0
 --- !u!135 &1692113161
 SphereCollider:
   m_ObjectHideFlags: 0
