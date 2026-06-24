@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class VRCoasterRide : MonoBehaviour
 {
@@ -57,6 +58,14 @@ public class VRCoasterRide : MonoBehaviour
     private bool isRiding = false;
     private float currentSpeed;
 
+    [Header("Panel")]
+    public GameObject StartPanel;
+    public GameObject EndPanel;
+
+    [Header("End Panel Score Text")]
+    public TMP_Text endScoreText;
+    public string endScorePrefix = "Final Score: ";
+
     public bool IsRiding
     {
         get { return isRiding; }
@@ -76,6 +85,16 @@ public class VRCoasterRide : MonoBehaviour
         if (ridePath.Count > 0)
         {
             ResetRidePosition();
+        }
+
+        if(StartPanel != null)
+        {
+            StartPanel.SetActive(true);
+        }
+
+        if(EndPanel != null)
+        {
+            EndPanel.SetActive(false);
         }
 
         currentSpeed = startSpeed;
@@ -112,6 +131,16 @@ public class VRCoasterRide : MonoBehaviour
 
     public void StartRide()
     {
+        if(StartPanel != null)
+        {
+            StartPanel.SetActive(false);
+        }
+
+        if(EndPanel != null)
+        {
+            EndPanel.SetActive(false);
+        }
+
         if (ridePath.Count < 2 || rideTarget == null)
         {
             Debug.LogWarning("无法开始过山车，请检查 rideTarget 或 trackPoints。");
@@ -184,7 +213,12 @@ public class VRCoasterRide : MonoBehaviour
 
     void UpdateScoreUI()
     {
-        Debug.Log("Get Coin");
+        Debug.Log("Current Score: " + score);
+
+        if (endScoreText != null)
+        {
+            endScoreText.text = endScorePrefix + score.ToString();
+        }
     }
 
     void ResetCoins()
@@ -206,6 +240,16 @@ public class VRCoasterRide : MonoBehaviour
     void EndRide()
     {
         isRiding = false;
+
+        if (endScoreText != null)
+        {
+            endScoreText.text = endScorePrefix + score.ToString();
+        }
+
+        if (EndPanel != null)
+        {
+            EndPanel.SetActive(true);
+        }
 
         if (replayObject != null)
         {

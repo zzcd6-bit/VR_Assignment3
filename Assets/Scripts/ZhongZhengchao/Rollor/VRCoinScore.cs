@@ -7,11 +7,9 @@ public class VRCoinScore : MonoBehaviour
     [Header("Score")]
     public int scoreValue = 10;
 
-    [Header("Gaze Setting")]
-    public float gazeTime = 0.5f;
+    [Header("Coin Animation")]
+    public float rotateSpeed = 90f;
 
-    private bool isLooking = false;
-    private float timer = 0f;
     private bool collected = false;
 
     private Vector3 startPosition;
@@ -32,59 +30,44 @@ public class VRCoinScore : MonoBehaviour
             return;
         }
 
-        transform.Rotate(Vector3.forward, 90f * Time.deltaTime);
+        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
+    }
 
-        if (!isLooking)
+    public void CollectCoinFromInteractableEnter()
+    {
+        if (collected)
         {
             return;
         }
 
+        // ²âÊÔ½×¶ÎÏÈ×¢ÊÍµô£¬·ÀÖ¹ IsRiding=false µ¼ÖÂÄãÒÔÎªÃ»µãµ½
+        /*
         if (rideController != null && !rideController.IsRiding)
         {
+            Debug.Log("Ride is not running, coin cannot be collected.");
             return;
         }
+        */
 
-        timer += Time.deltaTime;
-
-        if (timer >= gazeTime)
-        {
-            CollectCoin();
-        }
-    }
-
-    public void BeginLook()
-    {
-        isLooking = true;
-        timer = 0f;
-
-        Debug.Log("Looking at coin: " + gameObject.name);
-    }
-
-    public void EndLook()
-    {
-        isLooking = false;
-        timer = 0f;
+        CollectCoin();
     }
 
     void CollectCoin()
     {
         collected = true;
-        isLooking = false;
-        timer = 0f;
 
         if (rideController != null)
         {
             rideController.AddScore(scoreValue);
         }
 
+        Debug.Log("Coin Collected: " + gameObject.name);
         gameObject.SetActive(false);
     }
 
     public void ResetCoin()
     {
         collected = false;
-        isLooking = false;
-        timer = 0f;
 
         transform.position = startPosition;
         transform.rotation = startRotation;
