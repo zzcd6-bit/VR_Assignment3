@@ -75,9 +75,9 @@ public class CollectibleItem : MonoBehaviour
             CollectibleCounter.Instance.AddCollectible(amount);
         }
 
-        if (collectSound != null)
+        if (GameAudioManager.Instance != null)
         {
-            AudioSource.PlayClipAtPoint(collectSound, transform.position, soundVolume);
+            GameAudioManager.Instance.PlayPickupSound();
         }
 
         if (collectEffect != null)

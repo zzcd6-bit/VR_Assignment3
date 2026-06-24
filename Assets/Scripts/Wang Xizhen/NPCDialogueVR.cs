@@ -21,6 +21,11 @@ public class NPCDialogueVR : MonoBehaviour
     public string greetTriggerName = "Greet";
     public float greetDuration = 1.5f;
 
+    [Header("Dialogue Audio")]
+    public AudioSource dialogueAudioSource;
+    public AudioClip dialogueSound;
+    public float dialogueSoundVolume = 1f;
+
     private XRSimpleInteractable interactable;
 
     private bool playerInRange;
@@ -28,7 +33,7 @@ public class NPCDialogueVR : MonoBehaviour
     private bool dialogueActive;
     private int currentLineIndex;
 
-    [Header("Editor Test")]//FOR TEST
+    [Header("Editor Test")]
     public bool allowKeyboardTest = true;
     public KeyCode testInteractKey = KeyCode.E;
 
@@ -39,6 +44,11 @@ public class NPCDialogueVR : MonoBehaviour
         if (npcAnimator == null)
         {
             npcAnimator = GetComponentInChildren<Animator>();
+        }
+
+        if (dialogueAudioSource == null)
+        {
+            dialogueAudioSource = GetComponentInParent<AudioSource>();
         }
 
         if (promptObject != null)
@@ -52,7 +62,7 @@ public class NPCDialogueVR : MonoBehaviour
         }
     }
 
-    private void Update()//FOR TEST
+    private void Update()
     {
         if (!allowKeyboardTest)
         {
@@ -179,6 +189,8 @@ public class NPCDialogueVR : MonoBehaviour
         {
             dialogueText.text = dialogueLines[currentLineIndex];
         }
+
+        PlayDialogueSound();
     }
 
     private void ShowNextLine()
@@ -201,6 +213,8 @@ public class NPCDialogueVR : MonoBehaviour
         {
             dialogueText.text = dialogueLines[currentLineIndex];
         }
+
+        PlayDialogueSound();
     }
 
     private void EndDialogue()
@@ -211,6 +225,23 @@ public class NPCDialogueVR : MonoBehaviour
         if (dialogueObject != null)
         {
             dialogueObject.SetActive(false);
+        }
+    }
+
+    private void PlayDialogueSound()
+    {
+        if (dialogueAudioSource == null)
+        {
+            return;
+        }
+
+        if (dialogueSound != null)
+        {
+            dialogueAudioSource.PlayOneShot(dialogueSound, dialogueSoundVolume);
+        }
+        else
+        {
+            dialogueAudioSource.Play();
         }
     }
 }

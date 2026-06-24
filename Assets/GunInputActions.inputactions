@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "GunInputActions",
+    "maps": [
+        {
+            "name": "Gun",
+            "id": "b4b268e8-9d74-46e6-b874-86c130b4f07a",
+            "actions": [
+                {
+                    "name": "ToggleGun",
+                    "type": "Button",
+                    "id": "7c5ecc41-5643-40b0-a6ac-ed7d8c52648f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "4f76aab7-5b01-46ad-9809-139c24966cf5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "04881658-c37f-466f-865c-bcd0155e5b41",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29b351ee-1ad6-42e0-944f-ffb6baaf75f1",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

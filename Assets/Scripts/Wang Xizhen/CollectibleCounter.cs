@@ -7,7 +7,7 @@ public class CollectibleCounter : MonoBehaviour
     public static CollectibleCounter Instance { get; private set; }
 
     [Header("Collectible Settings")]
-    public int targetCount = 3;
+    public int targetCount = 6;
     public int currentCount = 0;
 
     [Header("UI")]
@@ -15,6 +15,8 @@ public class CollectibleCounter : MonoBehaviour
 
     [Header("Event")]
     public UnityEvent onAllCollected;
+
+    private bool allCollectedTriggered = false;
 
     private void Awake()
     {
@@ -37,8 +39,9 @@ public class CollectibleCounter : MonoBehaviour
 
         UpdateUI();
 
-        if (currentCount >= targetCount)
+        if (currentCount >= targetCount && !allCollectedTriggered)
         {
+            allCollectedTriggered = true;
             onAllCollected.Invoke();
         }
     }
@@ -47,7 +50,7 @@ public class CollectibleCounter : MonoBehaviour
     {
         if (counterText != null)
         {
-            counterText.text = "Crystals: " + currentCount + " / " + targetCount;
+            counterText.text = "Cores: " + currentCount + " / " + targetCount;
         }
     }
 }
