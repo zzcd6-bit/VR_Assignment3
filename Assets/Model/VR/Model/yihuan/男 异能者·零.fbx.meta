@@ -1,0 +1,374 @@
+fileFormatVersion: 2
+guid: 36ec65bc8e0f3c94cbbcaacdc0edbdad
+ModelImporter:
+  serializedVersion: 24200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 0.shita
+    second: {fileID: 2100000, guid: 9e263120b30b7c245a01df4754a250dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1.kiba
+    second: {fileID: 2100000, guid: d7d12620807148a4397b38d0624d852d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 10._
+    second: {fileID: 2100000, guid: dccb49ed3c0246e4cbf278934aa645fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 11.yubi
+    second: {fileID: 2100000, guid: 6b2cb4aa98288784e93a0fdf11296288, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 12.shutou
+    second: {fileID: 2100000, guid: 3d63d68f74c7bef468060f50864f202c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 13.uwagi
+    second: {fileID: 2100000, guid: ea9fc462437db3c42b675e4361f7baab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 14.koromo_
+    second: {fileID: 2100000, guid: 51fbfc50644e4e346b87c514d1b97852, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 15.sode
+    second: {fileID: 2100000, guid: 77c3207f2cfc65d4eabd1b8909adabed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 16.migihiji_
+    second: {fileID: 2100000, guid: 2b7fcd9a43175f040b77865f48cdb052, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 17.koshi_1
+    second: {fileID: 2100000, guid: cfec648daeb4fff49a104dfb1c3100b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 18.__
+    second: {fileID: 2100000, guid: 8a4f26f4feb8830438bc910b30b5beb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 19.__
+    second: {fileID: 2100000, guid: 8662c096fc6194f41b42c4927d76ad6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2.koukou
+    second: {fileID: 2100000, guid: c084f46bcbdc30642b8022d062dac90f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 20.__+
+    second: {fileID: 2100000, guid: 55c2020a16469574e930cab27208c585, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 21.kisaki_2
+    second: {fileID: 2100000, guid: b8513bc7e122ee34badc0e7c57cf75d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 22.kisaki_1
+    second: {fileID: 2100000, guid: ff7b439d71bca7a40bb4c66eefb5be7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 23.__
+    second: {fileID: 2100000, guid: f224d23627ea33140b65bb0e9e9df33b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 24._koromo
+    second: {fileID: 2100000, guid: 31166476b4ed4cb4f9d3cb8c1a5c10e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 25._
+    second: {fileID: 2100000, guid: 2e8fbb667d302184389756d1bf5fc729, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 26.kutsu
+    second: {fileID: 2100000, guid: f2a9dca855f9095438f1c9817601c6b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 27.koromo_
+    second: {fileID: 2100000, guid: 08e84c07759533c4e90672f479d65dad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 28.hiji_
+    second: {fileID: 2100000, guid: 5a2aadf1e095d0c49bc57d9842f028e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 29.koshi_2
+    second: {fileID: 2100000, guid: 7362b5aac63ff634896bf958e1e6d540, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 3.meshiro
+    second: {fileID: 2100000, guid: 1f22c7f0a5e9439428f0cf0368ea8ada, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 30.koshi_2-_
+    second: {fileID: 2100000, guid: 8fb08bde13f65144eb368a6176c7ec76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 31.__
+    second: {fileID: 2100000, guid: 75133dce642f2ed48aaabf1c3a15ad04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 32.___
+    second: {fileID: 2100000, guid: fa3c5bd79f0869c4288fb13a46ae86fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 33.kisakikami
+    second: {fileID: 2100000, guid: dbccd0889fb12d34c84a9535709ea1c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 34.maegami-uchi
+    second: {fileID: 2100000, guid: 06c4d2bec510240479ff61788ecadc56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 35.maegami-soto
+    second: {fileID: 2100000, guid: 891963f704b10d448af62e31def9cd76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 36._umi1
+    second: {fileID: 2100000, guid: 6961853edeb1d0e4d855f3cc1b990029, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 37._umi2
+    second: {fileID: 2100000, guid: b1ef03bf81986b14f878403353b93ecf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 38._umi3
+    second: {fileID: 2100000, guid: 8ece2c8271fa02c458787ee83e619711, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 39._umi4
+    second: {fileID: 2100000, guid: 715d6c75fd35b664eb3a6c08b25804c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 4.atama_
+    second: {fileID: 2100000, guid: c92dd2a9edd1a7d4abeb2c5c6ba8b8ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 40._umi5
+    second: {fileID: 2100000, guid: d7a2e4ca29a090747a38b5811cc2c596, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 41._umi6
+    second: {fileID: 2100000, guid: 9752857cb57edb4499da71a330914b85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 42._umi7
+    second: {fileID: 2100000, guid: f1c07334a9edade4aa9a1c195cee535e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 43._umi8
+    second: {fileID: 2100000, guid: 0016d17116485744788452482ddf6aa0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 44._umi9
+    second: {fileID: 2100000, guid: 22d5b895d48c049429221abc011178f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 45.hyoujouzai_
+    second: {fileID: 2100000, guid: 870466b769e1f0148a3f81c86f6e12b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 46.mekage
+    second: {fileID: 2100000, guid: fc4946eb3ef30424c8ebd3a80a97241d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 5.hitomi
+    second: {fileID: 2100000, guid: 284e81ecb26d6ce4ea908c9737c9a79a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 6.hitomi-kouhikari
+    second: {fileID: 2100000, guid: 87e704b2ffacbd04d93e4fc4289bdd30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 7.matsuge
+    second: {fileID: 2100000, guid: e1a19900485da5640a7cc8ae095587ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 8.matsuge+
+    second: {fileID: 2100000, guid: f1dae3934585d9d46a5286443fea4c4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 9.mayu
+    second: {fileID: 2100000, guid: 5db41b78d805c3e4eabd3c500a36457d, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: motion2_vmd
+      takeName: "TheRunningMan/Assets/Model/VR/Animation/bad by\u5C0F\u52001015/\u6210\u7537/motion2_vmd"
+      internalID: -5247792879204098213
+      firstFrame: 0
+      lastFrame: 5400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
