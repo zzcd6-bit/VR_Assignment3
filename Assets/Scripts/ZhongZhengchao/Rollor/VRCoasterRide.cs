@@ -5,7 +5,12 @@ using TMPro;
 public class VRCoasterRide : MonoBehaviour
 {
     [Header("VR Seat Rig")]
+    [Tooltip("这里拖 XR Origin，或者拖 XR Origin 外面的父物体。不要拖 Main Camera。")]
     public Transform rideTarget;
+
+    [Header("VR Camera")]
+    [Tooltip("这里拖 XR Origin 里面的 Main Camera。VR 模板一定要拖这个。")]
+    public Transform xrCamera;
 
     [Header("Track Point Root")]
     public Transform trackPointRoot;
@@ -39,6 +44,9 @@ public class VRCoasterRide : MonoBehaviour
     [Header("Rotation Settings")]
     public bool rotateSeatForward = true;
     public float rotateSmoothSpeed = 5f;
+
+    [Tooltip("如果你的 TrackPoint 有旋转角度，打开这个可以让玩家跟着轨道倾斜。")]
+    public bool useTrackPointUpForRoll = true;
 
     [Header("Start / Replay Objects")]
     public GameObject startRideObject;
@@ -78,8 +86,13 @@ public class VRCoasterRide : MonoBehaviour
 
         if (rideTarget == null)
         {
-            Debug.LogWarning("rideTarget 没有拖进去。");
+            Debug.LogWarning("rideTarget 没有拖进去。VR 模板里请拖 XR Origin 或 XR Origin 的父物体。");
             return;
+        }
+
+        if (xrCamera == null)
+        {
+            Debug.LogWarning("xrCamera 没有拖进去。VR 模板里请拖 XR Origin 里面的 Main Camera。");
         }
 
         if (ridePath.Count > 0)
@@ -87,12 +100,12 @@ public class VRCoasterRide : MonoBehaviour
             ResetRidePosition();
         }
 
-        if(StartPanel != null)
+        if (StartPanel != null)
         {
             StartPanel.SetActive(true);
         }
 
-        if(EndPanel != null)
+        if (EndPanel != null)
         {
             EndPanel.SetActive(false);
         }
@@ -131,12 +144,12 @@ public class VRCoasterRide : MonoBehaviour
 
     public void StartRide()
     {
-        if(StartPanel != null)
+        if (StartPanel != null)
         {
             StartPanel.SetActive(false);
         }
 
-        if(EndPanel != null)
+        if (EndPanel != null)
         {
             EndPanel.SetActive(false);
         }
@@ -158,6 +171,7 @@ public class VRCoasterRide : MonoBehaviour
         {
             replayObject.SetActive(false);
         }
+
         SetCartModelActive(true);
         Debug.Log("Ride Start");
     }
@@ -173,7 +187,10 @@ public class VRCoasterRide : MonoBehaviour
 
     public void SetCartModelActive(bool active)
     {
-        cartModel.gameObject.SetActive(active);
+        if (cartModel != null)
+        {
+            cartModel.SetActive(active);
+        }
     }
 
     public void ResetRidePosition()
@@ -186,7 +203,7 @@ public class VRCoasterRide : MonoBehaviour
         currentIndex = 0;
         currentSpeed = startSpeed;
 
-        rideTarget.position = ridePath[0] + seatOffset;
+        Vector3 startSeatPosition = ridePath[0] + seatOffset;
 
         if (rotateSeatForward && ridePath.Count > 1)
         {
@@ -194,9 +211,14 @@ public class VRCoasterRide : MonoBehaviour
 
             if (direction.sqrMagnitude > 0.001f)
             {
-                rideTarget.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
+                Vector3 up = GetPathUp();
+                Quaternion targetRotation = Quaternion.LookRotation(direction.normalized, up);
+
+                rideTarget.rotation = targetRotation;
             }
         }
+
+        MoveVRCameraToSeatPosition(startSeatPosition);
     }
 
     public void AddScore(int value)
@@ -342,11 +364,13 @@ public class VRCoasterRide : MonoBehaviour
 
         UpdateSpeed(currentPoint, nextPoint);
 
-        Vector3 targetPosition = nextPoint + seatOffset;
+        Vector3 targetSeatPosition = nextPoint + seatOffset;
 
-        rideTarget.position = Vector3.MoveTowards(
-            rideTarget.position,
-            targetPosition,
+        Vector3 currentSeatPosition = GetCurrentSeatPosition();
+
+        Vector3 newSeatPosition = Vector3.MoveTowards(
+            currentSeatPosition,
+            targetSeatPosition,
             currentSpeed * Time.deltaTime
         );
 
@@ -356,7 +380,12 @@ public class VRCoasterRide : MonoBehaviour
 
             if (direction.sqrMagnitude > 0.001f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
+                Vector3 up = GetPathUp();
+
+                Quaternion targetRotation = Quaternion.LookRotation(
+                    direction.normalized,
+                    up
+                );
 
                 rideTarget.rotation = Quaternion.Slerp(
                     rideTarget.rotation,
@@ -366,10 +395,83 @@ public class VRCoasterRide : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(rideTarget.position, targetPosition) < 0.05f)
+        MoveVRCameraToSeatPosition(newSeatPosition);
+
+        if (Vector3.Distance(GetCurrentSeatPosition(), targetSeatPosition) < 0.05f)
         {
             currentIndex++;
         }
+    }
+
+    Vector3 GetCurrentSeatPosition()
+    {
+        if (xrCamera != null)
+        {
+            return xrCamera.position;
+        }
+
+        return rideTarget.position;
+    }
+
+    void MoveVRCameraToSeatPosition(Vector3 targetSeatPosition)
+    {
+        if (xrCamera != null)
+        {
+            Vector3 offset = targetSeatPosition - xrCamera.position;
+            rideTarget.position += offset;
+        }
+        else
+        {
+            rideTarget.position = targetSeatPosition;
+        }
+    }
+
+    Vector3 GetPathUp()
+    {
+        if (!useTrackPointUpForRoll)
+        {
+            return Vector3.up;
+        }
+
+        if (trackPoints == null || trackPoints.Length < 2)
+        {
+            return Vector3.up;
+        }
+
+        if (ridePathSegmentIndex == null || ridePathSegmentIndex.Count == 0)
+        {
+            return Vector3.up;
+        }
+
+        int segment = Mathf.Clamp(
+            ridePathSegmentIndex[Mathf.Clamp(currentIndex, 0, ridePathSegmentIndex.Count - 1)],
+            0,
+            trackPoints.Length - 2
+        );
+
+        Transform pointA = trackPoints[segment];
+        Transform pointB = trackPoints[Mathf.Min(segment + 1, trackPoints.Length - 1)];
+
+        if (pointA == null || pointB == null)
+        {
+            return Vector3.up;
+        }
+
+        float t = 0f;
+
+        if (samplesPerSegment > 0)
+        {
+            t = (currentIndex % samplesPerSegment) / (float)samplesPerSegment;
+        }
+
+        Vector3 up = Vector3.Slerp(pointA.up, pointB.up, t);
+
+        if (up.sqrMagnitude < 0.001f)
+        {
+            return Vector3.up;
+        }
+
+        return up.normalized;
     }
 
     void UpdateSpeed(Vector3 currentPoint, Vector3 nextPoint)

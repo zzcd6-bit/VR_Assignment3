@@ -6,13 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/MainScene.unity
+    guid: f26f5be72fc4b9c4191e4a1f4d35e4b9
+  - enabled: 1
+    path: Assets/Scenes/Coaster.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
   - enabled: 1
     path: Assets/Scenes/maze.unity
     guid: c6a8d88b98c7ea04d81e4919715bf7ef
   - enabled: 1
-    path: Assets/Scenes/shoot game.unity
+    path: Assets/Scenes/ShootGame.unity
     guid: 059172e39e9e4ec44b00ce1d573824c8
   - enabled: 1
     path: Assets/Scenes/Cinema.unity
