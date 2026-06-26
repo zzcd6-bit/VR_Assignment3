@@ -130,6 +130,8 @@ MonoBehaviour:
   rideController: {fileID: 0}
   scoreValue: 10
   rotateSpeed: 90
+  collectSound: {fileID: 8300000, guid: 4f975d5b9ae71544eb00ad762eb8591e, type: 3}
+  collectSoundVolume: 1
 --- !u!114 &5997495469631580219
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,11 @@ public class VRCoinScore : MonoBehaviour
     [Header("Coin Animation")]
     public float rotateSpeed = 90f;
 
+    [Header("Coin Sound")]
+    public AudioClip collectSound;
+    [Range(0f, 1f)]
+    public float collectSoundVolume = 1f;
+
     private bool collected = false;
 
     private Vector3 startPosition;
@@ -61,7 +66,18 @@ public class VRCoinScore : MonoBehaviour
             rideController.AddScore(scoreValue);
         }
 
+        // 播放获取 Coin 的音效
+        if (collectSound != null)
+        {
+            AudioSource.PlayClipAtPoint(
+                collectSound,
+                transform.position,
+                collectSoundVolume
+            );
+        }
+
         Debug.Log("Coin Collected: " + gameObject.name);
+
         gameObject.SetActive(false);
     }
 

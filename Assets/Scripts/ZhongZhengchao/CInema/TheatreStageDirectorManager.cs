@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TheatreStageDirectorManager : MonoBehaviour
 {
@@ -31,14 +30,14 @@ public class TheatreStageDirectorManager : MonoBehaviour
         [Tooltip("这个效果属于哪个舞台模式")]
         public StageMode mode;
 
-        [Tooltip("显示在 UI 上的名字。现在 UI 会自动使用英文模式名，这个主要方便你自己看")]
+        [Tooltip("方便你自己在 Inspector 里看，不会自动改 UI")]
         public string modeNameCN;
 
         [TextArea(2, 4)]
-        [Tooltip("这个模式的说明，方便你在 Inspector 里看")]
+        [Tooltip("方便你自己在 Inspector 里看，不会自动改 UI")]
         public string modeDescriptionCN;
 
-        [Tooltip("这个模式在 UI 卡片下面显示的预览图")]
+        [Tooltip("方便你自己在 Inspector 里看，不会自动改 UI")]
         public Sprite previewImage;
 
         [Header("这个模式要打开的物体")]
@@ -51,26 +50,6 @@ public class TheatreStageDirectorManager : MonoBehaviour
 
         [Tooltip("切换到这个模式时播放一次的粒子，可以不填")]
         public ParticleSystem[] playParticlesOnEnter;
-    }
-
-    [Serializable]
-    public class ModeButtonUI
-    {
-        [Header("模式按钮 UI")]
-        [Tooltip("这个按钮对应哪个模式")]
-        public StageMode mode;
-
-        [Tooltip("UI 按钮组件")]
-        public Button button;
-
-        [Tooltip("按钮下面显示的预览图片")]
-        public Image previewImage;
-
-        [Tooltip("按钮标题文字")]
-        public TMP_Text titleText;
-
-        [Tooltip("按钮下面的说明文字，可不填")]
-        public TMP_Text descriptionText;
     }
 
     [Serializable]
@@ -129,20 +108,6 @@ public class TheatreStageDirectorManager : MonoBehaviour
     [Header("五个模式的灯光 / 后处理 / 粒子设置")]
     [Tooltip("这里放 Opening、Calm、BuildUp、Climax、Finale 五个模式的效果资料")]
     public List<StageModeEffect> modeEffects = new List<StageModeEffect>();
-
-    [Header("模式切换面板 UI")]
-    [Tooltip("这里放四个模式按钮：Calm、BuildUp、Climax、Finale。不需要放 Opening")]
-    public List<ModeButtonUI> modeButtons = new List<ModeButtonUI>();
-
-    [Header("特效面板 UI")]
-    [Tooltip("开始演出按钮")]
-    public Button startButton;
-
-    [Tooltip("鼓掌按钮，不计分，只是彩蛋")]
-    public Button applauseButton;
-
-    [Tooltip("烟花按钮，不计分，只是特效")]
-    public Button fireworksButton;
 
     [Header("舞蹈和音乐")]
     [Tooltip("这里放 7 个舞者的 Animator")]
@@ -224,8 +189,8 @@ public class TheatreStageDirectorManager : MonoBehaviour
 
     private void Start()
     {
-        BindUIButtons();
-        RefreshModeButtonUI();
+        Cursor.lockState = CursorLockMode.Locked;
+
         PauseAllDancersAtStart();
 
         currentState = GameState.Tutorial;
@@ -274,69 +239,28 @@ public class TheatreStageDirectorManager : MonoBehaviour
         }
     }
 
-    private void BindUIButtons()
+    // =========================
+    // 这些方法是给 Button OnClick 手动拖的
+    // =========================
+
+    public void PressCalmModeButton()
     {
-        foreach (ModeButtonUI ui in modeButtons)
-        {
-            if (ui == null || ui.button == null)
-                continue;
-
-            StageMode capturedMode = ui.mode;
-            ui.button.onClick.RemoveAllListeners();
-            ui.button.onClick.AddListener(() => PressModeButton(capturedMode));
-        }
-
-        if (startButton != null)
-        {
-            startButton.onClick.RemoveAllListeners();
-            startButton.onClick.AddListener(PressStartButton);
-        }
-
-        if (applauseButton != null)
-        {
-            applauseButton.onClick.RemoveAllListeners();
-            applauseButton.onClick.AddListener(PressApplauseButton);
-        }
-
-        if (fireworksButton != null)
-        {
-            fireworksButton.onClick.RemoveAllListeners();
-            fireworksButton.onClick.AddListener(PressFireworksButton);
-        }
+        PressModeButton(StageMode.Calm);
     }
 
-    private void RefreshModeButtonUI()
+    public void PressBuildUpModeButton()
     {
-        foreach (ModeButtonUI ui in modeButtons)
-        {
-            if (ui == null)
-                continue;
-
-            StageModeEffect effect = GetModeEffect(ui.mode);
-
-            if (effect != null && ui.previewImage != null)
-                ui.previewImage.sprite = effect.previewImage;
-
-            if (ui.titleText != null)
-                ui.titleText.text = GetModeName(ui.mode);
-
-            if (ui.descriptionText != null)
-                ui.descriptionText.text = GetModeDescription(ui.mode);
-        }
+        PressModeButton(StageMode.BuildUp);
     }
 
-    public void PressModeButton(StageMode mode)
+    public void PressClimaxModeButton()
     {
-        ApplyMode(mode);
+        PressModeButton(StageMode.Climax);
+    }
 
-        if (currentState == GameState.Tutorial)
-        {
-            SetStatus("Previewing: " + GetModeName(mode));
-        }
-        else if (currentState == GameState.Playing)
-        {
-            CheckModeScore(mode);
-        }
+    public void PressFinaleModeButton()
+    {
+        PressModeButton(StageMode.Finale);
     }
 
     public void PressStartButton()
@@ -371,6 +295,20 @@ public class TheatreStageDirectorManager : MonoBehaviour
             SetStatus("Fireworks effect triggered!");
         else
             SetStatus("Fireworks preview triggered!");
+    }
+
+    public void PressModeButton(StageMode mode)
+    {
+        ApplyMode(mode);
+
+        if (currentState == GameState.Tutorial)
+        {
+            SetStatus("Previewing: " + GetModeName(mode));
+        }
+        else if (currentState == GameState.Playing)
+        {
+            CheckModeScore(mode);
+        }
     }
 
     private IEnumerator StartPerformanceRoutine()
@@ -814,25 +752,6 @@ public class TheatreStageDirectorManager : MonoBehaviour
                 return "Finale";
             default:
                 return mode.ToString();
-        }
-    }
-
-    private string GetModeDescription(StageMode mode)
-    {
-        switch (mode)
-        {
-            case StageMode.Calm:
-                return "Soft and calm stage atmosphere.";
-            case StageMode.BuildUp:
-                return "Stronger rhythm and brighter stage mood.";
-            case StageMode.Climax:
-                return "High-energy lighting and intense stage effects.";
-            case StageMode.Finale:
-                return "Final spotlight and ending atmosphere.";
-            case StageMode.Opening:
-                return "Dark opening atmosphere before the show.";
-            default:
-                return "";
         }
     }
 

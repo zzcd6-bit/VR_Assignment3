@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.google.xr.cardboard": "https://github.com/googlevr/cardboard-xr-plugin.git",
+    "com.unity.ai.navigation": "2.0.13",
     "com.unity.collab-proxy": "2.12.4",
     "com.unity.feature.development": "1.0.2",
     "com.unity.ide.rider": "3.0.39",
@@ -9,6 +10,8 @@
     "com.unity.multiplayer.center": "1.0.0",
     "com.unity.render-pipelines.universal": "17.2.0",
     "com.unity.shadergraph": "17.2.0",
+    "com.unity.splines": "2.8.4",
+    "com.unity.visualscripting": "1.9.11",
     "com.unity.xr.androidxr-openxr": "1.2.0",
     "com.unity.xr.arfoundation": "6.4.1",
     "com.unity.xr.compositionlayers": "2.4.0",
