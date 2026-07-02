@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: f26f5be72fc4b9c4191e4a1f4d35e4b9
   - enabled: 1
-    path: Assets/Scenes/Coaster.unity
+    path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
   - enabled: 1
     path: Assets/Scenes/maze.unity

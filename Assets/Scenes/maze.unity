@@ -5142,7 +5142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31226,6 +31226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Wall_Laser_01
       objectReference: {fileID: 0}
+    - target: {fileID: 636581859208276779, guid: aeb389fa169e7514eb6638c9bc512519, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31384,7 +31388,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1874568830}
+<<<<<<< HEAD
   - {fileID: 951282404}
+=======
+>>>>>>> 98e9b6b3c474761669c837d12757060f3c3f2c62
   - {fileID: 1523139618}
   - {fileID: 339696544}
   - {fileID: 160722751}

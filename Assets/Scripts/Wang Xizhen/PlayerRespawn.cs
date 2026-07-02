@@ -39,7 +39,7 @@ public class PlayerRespawn : MonoBehaviour
             characterController.enabled = false;
         }
 
-        // 1. 先让玩家面向出生点方向
+        
         Vector3 cameraForward = cameraTransform.forward;
         cameraForward.y = 0f;
         cameraForward.Normalize();
@@ -54,13 +54,13 @@ public class PlayerRespawn : MonoBehaviour
             transform.RotateAround(cameraTransform.position, Vector3.up, angle);
         }
 
-        // 2. 让 Main Camera 的 XZ 位置对齐到 StartPoint
+        
         Vector3 cameraOffsetFromOrigin = cameraTransform.position - transform.position;
         cameraOffsetFromOrigin.y = 0f;
 
         Vector3 newOriginPosition = startPoint.position - cameraOffsetFromOrigin;
 
-        // 3. Y 使用出生点的地面高度
+        
         newOriginPosition.y = startPoint.position.y;
 
         transform.position = newOriginPosition;
