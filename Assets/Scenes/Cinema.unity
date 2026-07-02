@@ -2140,7 +2140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5626134133521272403, guid: 1c8142677c6bf684c994328b133acbb7, type: 3}
       propertyPath: m_text
-      value: "\u2605"
+      value: Title
       objectReference: {fileID: 0}
     - target: {fileID: 5626134133521272403, guid: 1c8142677c6bf684c994328b133acbb7, type: 3}
       propertyPath: m_fontSize
@@ -18080,11 +18080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5458165417042490338, guid: 1c8142677c6bf684c994328b133acbb7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.20000008
+      value: 0.2000001
       objectReference: {fileID: 0}
     - target: {fileID: 5458165417042490338, guid: 1c8142677c6bf684c994328b133acbb7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.20000008
+      value: 0.2000001
       objectReference: {fileID: 0}
     - target: {fileID: 5458165417042490338, guid: 1c8142677c6bf684c994328b133acbb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18096,7 +18096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5458165417042490338, guid: 1c8142677c6bf684c994328b133acbb7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.26
+      value: -1.2600002
       objectReference: {fileID: 0}
     - target: {fileID: 5458165417042490338, guid: 1c8142677c6bf684c994328b133acbb7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24197,8 +24197,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6756803966690139854}
-  - {fileID: 2132236294}
   - {fileID: 1036822412}
+  - {fileID: 2132236294}
   - {fileID: 276621033}
   m_Father: {fileID: 2455137855676609799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24225,7 +24225,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -207.8
+  m_Spacing: -215
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

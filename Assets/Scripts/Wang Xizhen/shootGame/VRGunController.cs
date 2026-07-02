@@ -60,14 +60,16 @@ public class VRGunController : MonoBehaviour
 
     private void OnEnable()
     {
+        
         if (toggleGunAction != null && toggleGunAction.action != null)
         {
             toggleGunAction.action.Enable();
         }
 
+        
         if (shootAction != null && shootAction.action != null)
         {
-            shootAction.action.Enable();
+            shootAction.action.Disable();
         }
     }
 
@@ -117,10 +119,12 @@ public class VRGunController : MonoBehaviour
             ToggleGun();
         }
 
-        if (gunEquipped)
+        if (!gunEquipped)
         {
-            UpdateCrosshairPosition();
+            return;
         }
+
+        UpdateCrosshairPosition();
 
         if (WasShootPressed())
         {
@@ -179,12 +183,66 @@ public class VRGunController : MonoBehaviour
         {
             crosshairObject.SetActive(gunEquipped);
         }
+
+        if (shootAction != null && shootAction.action != null)
+        {
+            if (gunEquipped)
+            {
+                shootAction.action.Enable();
+            }
+            else
+            {
+                shootAction.action.Disable();
+            }
+        }
+
+        if (!gunEquipped)
+        {
+            StopGunEffects();
+        }
+    }
+
+    private void StopGunEffects()
+    {
+        if (crosshairRoutine != null)
+        {
+            StopCoroutine(crosshairRoutine);
+            crosshairRoutine = null;
+        }
+
+        if (recoilRoutine != null)
+        {
+            StopCoroutine(recoilRoutine);
+            recoilRoutine = null;
+        }
+
+        if (crosshairTransform != null)
+        {
+            crosshairTransform.localScale = Vector3.one * crosshairNormalScale;
+        }
+
+        if (crosshairRenderer != null)
+        {
+            crosshairRenderer.material.color = crosshairNormalColor;
+        }
+
+        if (recoilRoot != null)
+        {
+            recoilRoot.localPosition = recoilStartLocalPosition;
+            recoilRoot.localRotation = recoilStartLocalRotation;
+        }
     }
 
     private void TryShoot()
     {
         if (!gunEquipped)
         {
+            return;
+        }
+
+        if (muzzlePoint == null)
+        {
+            Debug.LogWarning("Muzzle Point is missing.");
             return;
         }
 
@@ -209,25 +267,22 @@ public class VRGunController : MonoBehaviour
         bool hitTarget = false;
         Vector3 bulletEndPoint = muzzlePoint.position + muzzlePoint.forward * shootingRange;
 
-        if (muzzlePoint != null)
+        Ray ray = new Ray(muzzlePoint.position, muzzlePoint.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, shootingRange, shootLayerMask, QueryTriggerInteraction.Ignore))
         {
-            Ray ray = new Ray(muzzlePoint.position, muzzlePoint.forward);
+            bulletEndPoint = hit.point;
 
-            if (Physics.Raycast(ray, out RaycastHit hit, shootingRange, shootLayerMask, QueryTriggerInteraction.Ignore))
+            ShootingTarget target = hit.collider.GetComponentInParent<ShootingTarget>();
+
+            if (target != null)
             {
-                bulletEndPoint = hit.point;
+                bool validHit = target.Hit();
 
-                ShootingTarget target = hit.collider.GetComponentInParent<ShootingTarget>();
-
-                if (target != null)
+                if (validHit)
                 {
-                    bool validHit = target.Hit();
-
-                    if (validHit)
-                    {
-                        hitTarget = true;
-                        ShootingGameManager.Instance.AddScore();
-                    }
+                    hitTarget = true;
+                    ShootingGameManager.Instance.AddScore();
                 }
             }
         }
@@ -360,17 +415,7 @@ public class VRGunController : MonoBehaviour
         recoilRoot.localPosition = recoilStartLocalPosition;
         recoilRoot.localRotation = recoilStartLocalRotation;
     }
-    private void OnDrawGizmos()
-{
-    if (muzzlePoint == null)
-    {
-        return;
-    }
-
-    Gizmos.color = Color.green;
-    Gizmos.DrawRay(muzzlePoint.position, muzzlePoint.forward * shootingRange);
-    Gizmos.DrawSphere(muzzlePoint.position, 0.03f);
-}
+    
 
     private void UpdateCrosshairPosition()
     {
@@ -411,4 +456,6 @@ public class VRGunController : MonoBehaviour
             }
         }
     }
+
+    
 }
